@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdio.h>      
+#include <cmath> 
 
 const double kPi = 3.1416;
 
@@ -21,5 +23,5 @@ int main()
 
 float CalcularAreaCirculo (float Radio)
 {
-    return kPi * (Radio * Radio);
+    return roundf(kPi * (Radio * Radio));
 };
