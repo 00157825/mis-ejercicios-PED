@@ -1,6 +1,8 @@
 #include <iostream>
 
-float area_circulo (float x);
+const double kPi = 3.1416;
+
+float CalcularAreaCirculo (float Radio);
 
 int main()
 {
@@ -9,16 +11,15 @@ int main()
 
     std :: cout << "Ingrese el radio de su circulo: ";
     std :: cin >> radio;
-    std :: cout << "/n";
 
-    std :: cout << "El area de su circulo es: "<< area_circulo(radio)<< " m^2";
+    std :: cout << "\nEl area de su circulo es: "<< CalcularAreaCirculo(radio)<< " m^2";
 
 
     
     return 0;
 }
 
-float area_circulo (float x)
+float CalcularAreaCirculo (float Radio)
 {
-    return 3.1416 * (x * x);
+    return kPi * (Radio * Radio);
 };
