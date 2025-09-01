@@ -5,7 +5,8 @@
 #include <ctime>
 #include <cctype>
 
-void SolicitarDatos();
+struct DatosCantante SolicitarDatos();
+void ImprimirDatos();
 
 struct InformacionAlbum
 {
@@ -24,15 +25,14 @@ struct DatosCantante
 
 int main()
 {
-    
-
-    inf_album.canciones.push_back({});
 
     return 0;
 }
 
-void SolicitarDatos()
+struct DatosCantante SolicitarDatos()
 {
+
+    DatosCantante datos;
     int num_canciones;
     std ::cout << "Ingrese el nombre del cantante: ";
     std ::cin >> datos.nombre_cantante;
@@ -44,7 +44,7 @@ void SolicitarDatos()
 
     std ::cout << "Nombre del Album: ";
     std ::cin.ignore();
-    std ::getline(std:: cin, datos.album.nombre_del_album);
+    std ::getline(std::cin, datos.album.nombre_del_album);
     std ::cout << "/n";
 
     std ::cout << "Año de lanzamiento: ";
@@ -53,15 +53,28 @@ void SolicitarDatos()
 
     std ::cout << "¿Cuantas canciones tiene el album? :";
     std ::cin >> num_canciones;
-    
 
     for (int i = 0; i < num_canciones; i++)
     {
-        std :: string nombre_cancion;
-        std :: cout << "Ingrese el nombre de la cancion #"<<(i+1) << ": ";
+        std ::string nombre_cancion;
+        std ::cout << "Ingrese el nombre de la cancion #" << (i + 1) << ": ";
         std ::cin.ignore();
-        std ::getline(std:: cin, nombre_cancion);
+        std ::getline(std::cin, nombre_cancion);
 
-        datos.album.canciones.push_back({ i, nombre_cancion});
+        datos.album.canciones.push_back({i, nombre_cancion});
+    }
+}
+
+void ImprimirDatos(struct DatosCantante datos)
+{
+    std ::cout << "----------Datos del Cantante----------------" << std::endl;
+    std ::cout << "Nombre: " << datos.nombre_cantante << std::endl;
+    std ::cout << "Nacionalidad: " << datos.nacionalidad_cantante << std::endl;
+    std ::cout << "Nombre del album: " << datos.album.nombre_del_album << std::endl;
+    std ::cout << "Año de lanzamiento: " << datos.album.año_de_lanzamiento << std::endl;
+
+    for (auto cancion : datos.album.canciones)
+    {
+        std ::cout << "#" << cancion.first << " -  " << cancion.second << std::endl;
     }
 }
