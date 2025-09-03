@@ -28,7 +28,8 @@ int main()
 {
     DatosCantante cantante = SolicitarDatos();
     ImprimirDatos(cantante);
-    CalcularAntiguedad(cantante);
+
+    std ::cout << "Edad del album: " << CalcularAntiguedad(cantante) << " años" << std::endl;
 
     return 0;
 }
@@ -65,7 +66,7 @@ struct DatosCantante SolicitarDatos()
         std ::cin.ignore();
         std ::getline(std::cin, nombre_cancion);
 
-        datos.album.canciones.push_back({i+1, nombre_cancion});
+        datos.album.canciones.push_back({i + 1, nombre_cancion});
     }
 
     return datos;
@@ -74,7 +75,7 @@ struct DatosCantante SolicitarDatos()
 void ImprimirDatos(struct DatosCantante datos)
 {
     std ::cout << "----------Datos del Cantante----------------" << std::endl;
-    std ::cout << "Nombre: " << datos.nombre_cantante<<std::endl;
+    std ::cout << "Nombre: " << datos.nombre_cantante << std::endl;
     std ::cout << "Nacionalidad: " << datos.nacionalidad_cantante << std::endl;
     std ::cout << "Nombre del album: " << datos.album.nombre_del_album << std::endl;
     std ::cout << "Año de lanzamiento: " << datos.album.ano_de_lanzamiento << std::endl;
@@ -89,9 +90,5 @@ int CalcularAntiguedad(struct DatosCantante datos)
 {
     datos.album.edad_album = 2025 - datos.album.ano_de_lanzamiento;
 
-    std :: cout << "Edad del album: "<<datos.album.edad_album<< " años"<<std::endl;
-
     return datos.album.edad_album;
-
-
 }
