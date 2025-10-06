@@ -26,11 +26,11 @@ int main()
     InsertarInicio(80);
     InsertarInicio(100);
     Imprimir();
-   /* std ::cout << "Dir Memoria: " << inicio_lista << " Numero: " << inicio_lista->datos.numero << std::endl;
+    /* std ::cout << "Dir Memoria: " << inicio_lista << " Numero: " << inicio_lista->datos.numero << std::endl;
 
-    std :: cout << "Dir Memoria: "<<inicio_lista->siguiente->siguiente<< " Numero: "<<inicio_lista->siguiente->siguiente->datos.numero;
+     std :: cout << "Dir Memoria: "<<inicio_lista->siguiente->siguiente<< " Numero: "<<inicio_lista->siguiente->siguiente->datos.numero;
 
-    return 0; */
+     return 0; */
 }
 
 void InsertarInicio(int n)
@@ -110,7 +110,6 @@ void EliminarInicio()
 
         temporal = nullptr;
     }
-    
 }
 
 void EliminarFinal()
@@ -127,12 +126,10 @@ void EliminarFinal()
                 temporal2 = temporal;
                 temporal = temporal->siguiente;
             }
-            
+
             temporal2->siguiente = nullptr;
 
             delete temporal;
         }
-        
     }
-    
 }
