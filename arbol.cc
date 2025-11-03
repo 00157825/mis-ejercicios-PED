@@ -27,6 +27,8 @@ int main()
     struct Nodo *abb = nullptr;
     Tiobe informacion = SolicitarInformacion();
     crear_nodo(informacion);
+    insertar_nodo(abb, informacion);
+    RecorridoInorden(abb);
 
     return 0;
 }
