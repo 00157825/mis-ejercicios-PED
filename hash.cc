@@ -16,7 +16,7 @@ struct Nodo {
 
 Nodo *tabla[dimension] = {nullptr};
 
-void Agregar(std::string palabra);
+void Agregar(Registro r);
 int FHash(int);
 int ConversionASCII(std::string palabra);
 Nodo *Buscar(int, int);
@@ -26,12 +26,16 @@ void Imprimir();
 
 int main() {
   
-    std::string palabra = "JOSE";
+    Registro reg;
+    reg.palabra = "JOSE";
 
-    int valor_ascii = ConversionASCII(palabra);
+    /*int valor_ascii = ConversionASCII(palabra);
 
     std::cout<<"Valor ASCII: " <<valor_ascii<<"\n";
-    std::cout<<"Valor de FHash: "<<FHash(valor_ascii);
+    std::cout<<"Valor de FHash: "<<FHash(valor_ascii);*/
+
+    Agregar(reg);
+    Imprimir();
 
     return 0;
 }
@@ -48,9 +52,9 @@ int ConversionASCII(std::string palabra) {
     
 }
 
-void Agregar(std::string palabra) {
+void Agregar(Registro r) {
     Nodo *nuevoNodo = new Nodo;
-    Registro r;
+    r.dato = ConversionASCII(r.palabra);
     int clave = FHash(r.dato);
 
     nuevoNodo->registro = r;
@@ -62,10 +66,10 @@ void Agregar(std::string palabra) {
 
     tabla[clave] = nuevoNodo;
 
-    std::cout << "Dir. nodo " << nuevoNodo
+    std::cout << " | Dir. nodo " << nuevoNodo
               << " | Indice: " << clave
               << " | Dato almacenado (ASCII): " << r.dato
-              << " ('" << palabra << "')"
+              << " ('" << r.palabra << "')"
               << std::endl;
 }
 
