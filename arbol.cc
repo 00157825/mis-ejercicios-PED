@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <set>
 
 struct Tiobe
@@ -30,7 +31,7 @@ void BuscarLenguaje(const std::set<Tiobe , CompTiobe> &abb, std::string lenguaje
 
 int main()
 {
-    std::set<Tiobe> ABB;
+    std::set<Tiobe, CompTiobe> ABB;
     int opc;
     do
     {
@@ -42,7 +43,7 @@ int main()
 
     } while (opc == 1);
 
-    Imprimir();
+    Imprimir(ABB);
     
     return 0;
 
@@ -79,14 +80,12 @@ void Imprimir(const std::set<Tiobe , CompTiobe> &abb)
 
 void BuscarLenguaje(const std::set<Tiobe , CompTiobe> &abb, std::string lenguaje_buscado)
 {
-    if (abb.empty())
-    {
-        std::cout<<"El set esta vacio\n";
-    }
-
-
-    else
-    {
-        abb.find();
-    }
+    if (abb.empty()){
+    std::cout << "El set esta vacio \n";
+   }
+   auto it = abb.find({lenguaje_buscado, 0});
+   if(it != abb.end())
+   {
+    std::cout << "Lenguaje de programacion " ;
+   }
 }
