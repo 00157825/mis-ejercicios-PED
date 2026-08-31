@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C/C++: g++ Ejecutar y Depurar",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/output/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: g++ compilar archivo activo"
+        }
+    ]
+}
