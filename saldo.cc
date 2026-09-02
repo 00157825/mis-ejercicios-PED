@@ -16,6 +16,7 @@ int main()
 {
     float saldo = 150.67;
     float cantidad = 50.45;
+    cout<<"gay"<<endl;
 
     depositar(&saldo, cantidad);
 
