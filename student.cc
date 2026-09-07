@@ -7,67 +7,62 @@ struct Estudiante
     float promedio;
 };
 
-void MostrarEstudiante(const Estudiante* estudiante);
-void ModificarPromedio(Estudiante* estudiante, float nuevo_promedio);
-bool Aprobar(const Estudiante* estudiante);
+void MostrarEstudiante(const Estudiante *estudiante);
+void ModificarPromedio(Estudiante *estudiante, float nuevo_promedio);
+bool Aprobar(const Estudiante *estudiante);
 
 int main()
 {
-    Estudiante student 
-    {
+    Estudiante student{
         "Pepito",
         19,
         5.0f,
     };
 
-    Estudiante* student_ptr = &student;
+    Estudiante *student_ptr = &student;
 
-    std::cout<<"Datos del estudiante: "<<std::endl;
+    std::cout << "Datos del estudiante: " << std::endl;
     MostrarEstudiante(student_ptr);
-    
+
     if (Aprobar(student_ptr))
     {
-        std::cout << "\nAprobado"<<std::endl;
+        std::cout << "\nAprobado" << std::endl;
     }
 
-    else 
+    else
     {
-       std::cout << "\nNo aprobado"<<std::endl; 
+        std::cout << "\nNo aprobado" << std::endl;
     }
 
     ModificarPromedio(student_ptr, 8.5f);
 
-    std::cout<<"Nuevos datos del estudiante: "<<std::endl;
+    std::cout << "Nuevos datos del estudiante: " << std::endl;
     MostrarEstudiante(student_ptr);
 
     if (Aprobar(student_ptr))
     {
-        std::cout << "\nAprobado"<<std::endl;
+        std::cout << "\nAprobado" << std::endl;
     }
 
-    else 
+    else
     {
-       std::cout << "\nNo aprobado"<<std::endl; 
+        std::cout << "\nNo aprobado" << std::endl;
     }
-    
 }
 
-void MostrarEstudiante(const Estudiante* estudiante)
+void MostrarEstudiante(const Estudiante *estudiante)
 {
-    std::cout << "Nombre: "<<estudiante->nombre<<std::endl;
-    std::cout << "Promedio: "<<estudiante->promedio<<std::endl;
-    std::cout << "Edad: "<<estudiante->edad<<std::endl;
+    std::cout << "Nombre: " << estudiante->nombre << std::endl;
+    std::cout << "Promedio: " << estudiante->promedio << std::endl;
+    std::cout << "Edad: " << estudiante->edad << std::endl;
 };
 
-void ModificarPromedio(Estudiante* estudiante, float nuevo_promedio)
+void ModificarPromedio(Estudiante *estudiante, float nuevo_promedio)
 {
     estudiante->promedio = nuevo_promedio;
 };
 
-bool Aprobar(const Estudiante* estudiante)
+bool Aprobar(const Estudiante *estudiante)
 {
     return estudiante->promedio >= 6.0f;
 }
-
-
-
