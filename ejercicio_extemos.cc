@@ -1,30 +1,34 @@
 #include <iostream>
 using namespace std;
 
+void invertir_array(int *array, int cantidad)
+{
+    int *inicio = array;
+
+    int *fin = array + cantidad - 1;
+
+    while (inicio < fin)
+    {
+        int temp = *inicio;
+        *inicio = *fin;
+        *fin = temp;
+
+        inicio++;
+        --fin;
+    }
+}
 
 int main()
 {
-    int array[]={10,20,30,40,50};
-    int n = sizeof(array)/sizeof(array[0]);
+    int array[] = {10, 20, 30, 40, 50};
+    int cantidad = 5;
 
-    int *ptr_inicio = array;
-    int *ptr_fin = array + n - 1;
+    invertir_array(array, cantidad);
 
-    while (ptr_inicio < ptr_fin)
+    for (int i = 0; i < cantidad; i++)
     {
-        int temp = *ptr_inicio;
-        *ptr_inicio = *ptr_fin;
-        *ptr_fin = temp;
+        std::cout << "Elemento " << (i + 1) << ": " << array[i] << std::endl;
+    }
 
-        ptr_inicio++; // Avanza a la siguiente posición de memoria
-        ptr_fin--;    // Retrocede a la posición de memoria anterior
-    }
-    
-    for (int* ptr = array; ptr < array + n; ptr++)
-    {
-        std::cout << *ptr << " ";
-    }
-    std::cout << std::endl;
-    
     return 0;
 };
