@@ -21,8 +21,22 @@ void generarInforme(Elemento elementos[], int cantidad);
 
 int main()
 {
-    int cantidad = 3;
-    Elemento elementos[3];
+    Elemento elementos[10]; // capacidad máxima fija en 10
+    int cantidad;
+
+    do
+    {
+        std::cout << "¿Cuántos elementos desea registrar? (1-10): ";
+        std::cin >> cantidad;
+
+        if (cantidad < 1 || cantidad > 10)
+        {
+            std::cout << "Cantidad inválida. Debe estar entre 1 y 10." << std::endl;
+        }
+
+    } while (cantidad < 1 || cantidad > 10);
+
+    std::cin.ignore(); // limpia el \n antes del primer getline en registrarElemento
 
     for (int i = 0; i < cantidad; i++)
     {
