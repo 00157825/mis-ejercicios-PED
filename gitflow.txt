@@ -1,0 +1,16 @@
+git clone <url-del-repo-primer_parcial_ped>
+cd primer_parcial_ped
+git checkout -b main
+git checkout -b develop
+
+git checkout develop
+git checkout -b feature/struct-elemento
+
+git add .
+git commit -m "feat: Define struct Elemento con sus campos"
+
+git checkout develop
+git merge feature/struct-elemento
+
+git checkout main
+git merge develop
