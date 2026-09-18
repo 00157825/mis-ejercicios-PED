@@ -3,6 +3,8 @@ cd primer_parcial_ped
 git checkout -b main
 git checkout -b develop
 
+//A PARTIR DE ACA SE REPITE EL PROCESO
+
 git checkout develop
 git checkout -b feature/struct-elemento
 
@@ -12,5 +14,9 @@ git commit -m "feat: Define struct Elemento con sus campos"
 git checkout develop
 git merge feature/struct-elemento
 
+//HASTA ACÁ, HASTA TERMINAR TODAS LAS FUNCIONES
+
 git checkout main
 git merge develop
+git push origin main
+git push origin develop
