@@ -1,21 +1,19 @@
-git clone <url-del-repo-primer_parcial_ped>
+# Setup inicial
+git clone <url>
 cd primer_parcial_ped
 git checkout -b main
 git checkout -b develop
 
-//A PARTIR DE ACA SE REPITE EL PROCESO
-
+# Por cada función nueva
 git checkout develop
-git checkout -b feature/struct-elemento
-
+git checkout -b feature/nombre-funcion
+# ... crear archivo y escribir código ...
 git add .
-git commit -m "feat: Define struct Elemento con sus campos"
-
+git commit -m "feat: Descripcion clara del cambio"
 git checkout develop
-git merge feature/struct-elemento
+git merge feature/nombre-funcion
 
-//HASTA ACÁ, HASTA TERMINAR TODAS LAS FUNCIONES
-
+# Al final
 git checkout main
 git merge develop
 git push origin main
