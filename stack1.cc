@@ -14,6 +14,10 @@ bool isBalanced(const std::string& expression)
         }
 
         else if(c == ')' || c == ']'||c == '}'){
+            if (stack.empty())
+            {
+                return false;
+            }
             
         }
         
