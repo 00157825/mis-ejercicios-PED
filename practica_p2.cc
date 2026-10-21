@@ -66,6 +66,7 @@ void PrintBackward(Node *head)
 
 bool InsertAfter(Node* head, int target, int value);
 void SplitByPosition(Node*& head, Node*& even_head, Node*& odd_head);
+void MoveLastToFront(Node*& head);
 
 int main()
 {
@@ -135,4 +136,29 @@ void SplitByPosition(Node*& head, Node*& even_head, Node*& odd_head) {
         current = next;
         ++pos;
     }
+}
+
+void MoveLastToFront(Node*& head)
+{   
+    if (head == nullptr || head->next == nullptr) 
+    {
+        return;
+    }
+
+    Node* last = head;
+
+    while (last->next != nullptr)
+    {
+        last = last->next;
+    }
+
+    last->next->prev = nullptr;
+
+    // Conectarlo al frente
+    last->prev = nullptr;
+    last->next = head;
+    head->prev = last;
+
+    head = last;
+    
 }
