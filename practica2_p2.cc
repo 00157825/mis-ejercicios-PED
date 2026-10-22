@@ -1,4 +1,7 @@
 #include <stack>
+#include <queue>
+
+void RotateQueue(std::queue<int> &requests, int k);
 
 void RemoveFromStack(std::stack<int> &tasks, int target)
 {
@@ -34,4 +37,21 @@ int main()
     tasks.push(40);
 
     RemoveFromStack(tasks, 20);
+}
+
+void RotateQueue(std::queue<int> &requests, int k)
+{
+    if (requests.empty() || k <= 0)
+    {
+        return;
+    }
+
+    int n = static_cast<int>(requests.size());
+    int rotaciones = k % n;
+
+    for (int i = 0; i < rotaciones; ++i)
+    {
+        requests.push(requests.front());
+        requests.pop();
+    }
 }
