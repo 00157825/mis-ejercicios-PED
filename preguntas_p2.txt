@@ -1,0 +1,43 @@
+#include <vector>
+
+int CountGreater(const std::vector<int>& values, int target) {
+  int count = 0;
+  int size = static_cast<int>(values.size());
+
+  for (int i = 0; i < size; ++i) {
+    if (values[i] > target) {
+      ++count;
+    }
+  }
+
+  int last_value = size > 0 ? values[size - 1] : 0;
+
+  if (last_value > target) {
+    ++count;
+  }
+
+  return count;
+}
+
+a. Identifique tres operaciones o instrucciones cuyo costo no crece con el tamaño del vector.
+      int count = 0;
+      int size = static_cast<int>(values.size());
+      int last_value = size > 0 ? values[size - 1] : 0;
+
+b. ¿Qué parte del código determina principalmente el crecimiento del tiempo de ejecución?
+    el for por que tiene una complejidad O(n)
+
+c. ¿Cuál es la complejidad temporal en notación Big-O? Justifique.
+    O(n), donde n es el tamaño del vector.
+
+    El ciclo corre n veces y su cuerpo es O(1) → n · O(1) = O(n).
+    Las demás instrucciones son O(1) y se suman: O(n) + O(1) + O(1) + ... = O(n + c).
+    Al quedarnos con el término dominante e ignorar constantes: O(n).
+
+    Es lineal porque el tiempo crece en proporción directa al tamaño de la entrada.
+
+d. Si el tamaño del vector se duplica, ¿cómo cambia aproximadamente el trabajo realizado por el ciclo principal?
+    Con n elementos el ciclo hace n iteraciones, T(n) = c · n. Con 2n elementos hace 2n iteraciones, 
+    T(2n) = c · 2n = 2 · T(n). Ejemplo: con 1,000 elementos hay 1,000 iteraciones; con 2,000 hay 2,000.
+
+##

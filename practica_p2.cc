@@ -162,3 +162,23 @@ void MoveLastToFront(Node*& head)
     head = last;
     
 }
+
+/*a. ¿Por qué guardar el siguiente nodo antes de modificar current->next?
+
+Porque current->next es la única referencia que tenemos al resto de la lista. En esta función, current->next se pone en 
+nullptr para desconectar el nodo y luego se reasigna al reubicarlo. Si no se guardara antes en next_node, se perdería el 
+acceso a los nodos siguientes, el recorrido no podría continuar y esos nodos quedarían inaccesibles (fuga de memoria).
+
+b. ¿Qué problema ocurre si se actualizan next pero no prev?
+
+La lista queda inconsistente: hacia adelante se ve correcta, pero los prev siguen apuntando a nodos de la lista original,
+o a nullptr. PrintBackward recorrería nodos incorrectos o se detendría antes de tiempo, y en la lista impar, 
+por ejemplo, el nodo 40 todavía apuntaría hacia atrás al 30 en vez de al 20. Cualquier operación que use prev 
+(borrar, insertar antes, recorrer al revés) podría corromper la lista o causar un acceso inválido a memoria.
+
+c. Complejidad temporal
+
+O(n), donde n es el número de nodos. Cada nodo se visita exactamente una vez y, por cada uno, se hace trabajo 
+constante: guardar next, reasignar un par de punteros y agregarlo al final de una de las dos listas en O(1) gracias 
+a los punteros de cola. Total: n · O(1) = O(n). El espacio adicional es O(1), porque solo se usan unos cuantos punteros
+ y no se crean nodos nuevos.*/

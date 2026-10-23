@@ -1,0 +1,48 @@
+#include <vector>
+
+int CountPairs(const std::vector<int>& values) {
+  int count = 0;
+  int size = static_cast<int>(values.size());
+
+  for (int i = 0; i < size; ++i) {
+    for (int j = i + 1; j < size; ++j) {
+      if (values[i] == values[j]) {
+        ++count;
+      }
+    }
+  }
+
+  return count;
+}
+
+a. ¿Qué función cumple cada uno de los dos ciclos?
+    El ciclo externo (i) recorre todo el arreglo y en cada vuelta toma un elemento como referencia. 
+    El ciclo interno (j) empieza en la posición siguiente a i y recorre todos los elementos que quedan después, 
+    comparando cada uno con el de referencia. Así, cada par se revisa una sola vez y no se compara un elemento consigo 
+    mismo. Cuando los dos valores son iguales, el if incrementa el contador, de modo que la función 
+    cuenta los pares de elementos iguales.
+
+b. ¿Por qué analizar únicamente el ciclo externo no es suficiente para determinar la complejidad?
+    No basta analizar solo el ciclo externo porque su cuerpo no es de costo constante: contiene otro ciclo que también 
+    depende de n. Por cada vuelta del externo, el interno recorre varios elementos, así que el trabajo total es el del 
+    externo multiplicado por el del interno, O(n) · O(n) = O(n²). Si solo se mirara el externo, se concluiría que es 
+    lineal, y eso subestimaría cómo crece realmente el tiempo.
+
+c. Exprese el número exacto de comparaciones entre elementos para un arreglo de tamaño \(n\).
+    Para cada valor de i, el ciclo interno hace n - 1 - i comparaciones. Sumando para todos los valores de 
+    i: (n - 1) + (n - 2) + ... + 1 + 0 = n(n - 1)/2 comparaciones en total.
+
+d. Determine la complejidad temporal en notación Big-O y explique por qué.
+
+    Analizando línea por línea: int count = 0, int size = ... y el return son operaciones de tiempo constante, O(1). 
+    El ciclo externo se ejecuta n veces y, dentro de él, el ciclo interno se ejecuta hasta n veces, con un cuerpo 
+    (el if y el incremento) de costo O(1). Como los ciclos están anidados, se multiplican: O(n) · O(n) · O(1) = O(n²). 
+    Sumando las operaciones constantes: O(n²) + O(1) = O(n²), porque al calcular Big-O se descartan las constantes y los 
+    términos de menor orden. Esto concuerda con el número exacto de comparaciones, n(n-1)/2 = (n² - n)/2, 
+    cuyo término dominante es n². Por lo tanto, la complejidad temporal es O(n²).
+
+e. Si el tamaño del arreglo se duplica, ¿cómo cambia aproximadamente el número de comparaciones para tamaños grandes?
+    Si el tamaño del arreglo se duplica, sustituimos n por 2n en la fórmula: (2n)(2n - 1)/2 = (4n² - 2n)/2 = 2n² - n. 
+    Para tamaños grandes, el término dominante es n², así que pasamos de aproximadamente n²/2 comparaciones a 
+    aproximadamente 2n², es decir, el número de comparaciones se multiplica por 4. Esto es consecuencia de que la 
+    complejidad es cuadrática: duplicar la entrada cuadruplica el trabajo.
